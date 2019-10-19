@@ -20,7 +20,7 @@ public class AesEncryptUtils {
 
     public static byte[] aesEncryptToBytes(String content, String encryptKey) throws Exception {
         KeyGenerator kgen = KeyGenerator.getInstance("AES");
-        kgen.init(256);
+        kgen.init(128);
         Cipher cipher = Cipher.getInstance(ALGORITHMSTR);
         cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(encryptKey.getBytes(), "AES"));
         return cipher.doFinal(content.getBytes("utf-8"));
@@ -32,7 +32,7 @@ public class AesEncryptUtils {
 
     public static String aesDecryptByBytes(byte[] encryptBytes, String decryptKey) throws Exception {
         KeyGenerator kgen = KeyGenerator.getInstance("AES");
-        kgen.init(256);
+        kgen.init(128);
         Cipher cipher = Cipher.getInstance(ALGORITHMSTR);
         cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(decryptKey.getBytes(), "AES"));
         byte[] decryptBytes = cipher.doFinal(encryptBytes);
